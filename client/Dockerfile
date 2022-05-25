@@ -1,4 +1,4 @@
-FROM node:14.2.0-alpine3.11 as builder
+FROM node:14.2.0-alpine3.11 as build
 
 WORKDIR /app/client
 
@@ -6,7 +6,7 @@ COPY ./package.json /app/client
 
 RUN npm install
 
-COPY . /app/client
+COPY . /app/client/
 
 CMD ["npm", "run", "build"]
 
@@ -16,4 +16,4 @@ EXPOSE 3000
 
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=builder /app/client/build /usr/share/nginx/html
+COPY --from=build /app/client/build /usr/share/nginx/html
