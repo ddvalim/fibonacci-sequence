@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t ddvalim/fibonacci-sequence-frontend -f ./client/Dockerfile.dev ./client
+  - docker build -t diovanavalim/fibonacci-sequence-frontend -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true ddvalim/fibonacci-sequence-frontend npm test
+  - docker run -e CI=true diovanavalim/fibonacci-sequence-frontend npm test
 
 after_success:
-  - docker build -t ddvalim/fibonacci-sequence-client ./client
-  - docker build -t ddvalim/fibonacci-sequence-nginx ./nginx
-  - docker build -t ddvalim/fibonacci-sequence-server ./server
-  - docker build -t ddvalim/fibonacci-sequence-worker ./worker
+  - docker build -t diovanavalim/fibonacci-sequence-client ./client
+  - docker build -t diovanavalim/fibonacci-sequence-nginx ./nginx
+  - docker build -t diovanavalim/fibonacci-sequence-server ./server
+  - docker build -t diovanavalim/fibonacci-sequence-worker ./worker
   # Login to Docker CLI to publish this images
   - docker login -u $DOCKER_ID -p $DOCKER_PASSWOR
   # Push images to docker hub
-  - docker push ddvalim/fibonacci-sequence-client:latest
-  - docker push ddvalim/fibonacci-sequence-nginx:latest
-  - docker push ddvalim/fibonacci-sequence-server:latest
-  - docker push ddvalim/fibonacci-sequence-worker:latest
+  - docker push diovanavalim/fibonacci-sequence-client:latest
+  - docker push diovanavalim/fibonacci-sequence-nginx:latest
+  - docker push diovanavalim/fibonacci-sequence-server:latest
+  - docker push diovanavalim/fibonacci-sequence-worker:latest
