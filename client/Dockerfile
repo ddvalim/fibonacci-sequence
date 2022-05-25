@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . /app/client/
 
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 FROM nginx
 
