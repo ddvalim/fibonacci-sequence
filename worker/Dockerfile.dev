@@ -1,0 +1,11 @@
+FROM node:14.18-alpine3.13
+
+WORKDIR /app/worker
+
+COPY ./package.json /app/worker
+
+RUN npm install
+
+COPY . /app/worker
+
+CMD ["npm", "run", "dev"]

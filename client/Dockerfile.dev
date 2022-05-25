@@ -1,0 +1,11 @@
+FROM node:14.2.0-alpine3.11
+
+WORKDIR /app/client
+
+COPY ./package.json /app/client
+
+RUN npm install
+
+COPY . /app/client
+
+CMD ["npm", "run", "start"]
