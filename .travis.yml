@@ -14,7 +14,7 @@ after_success:
   - docker build -t ddvalim/fibonacci-sequence-server ./server
   - docker build -t ddvalim/fibonacci-sequence-worker ./worker
   # Login to Docker CLI to publish this images
-  - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD docker.io
+  - docker login -u $DOCKER_ID -p $DOCKER_PASSWOR
   # Push images to docker hub
   - docker push ddvalim/fibonacci-sequence-client:latest
   - docker push ddvalim/fibonacci-sequence-nginx:latest
