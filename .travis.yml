@@ -20,3 +20,15 @@ after_success:
   - docker push diovanavalim/fibonacci-sequence-nginx:latest
   - docker push diovanavalim/fibonacci-sequence-server:latest
   - docker push diovanavalim/fibonacci-sequence-worker:latest
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: 'fibonacci-sequence'
+  env: 'Fibonaccisequence-env'
+  bucket_name: elasticbeanstalk-us-east-2-169301003861 
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
